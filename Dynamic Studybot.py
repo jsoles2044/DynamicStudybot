@@ -12,7 +12,7 @@ objectives_input = st.text_area("Learning Objectives:")
 if objectives_input:
     objectives = [line.strip() for line in objectives_input.splitlines() if line.strip()]
 
-   # Initialize current objective
+ # Initialize current objective
 if 'current_objective' not in st.session_state:
     st.session_state.current_objective = random.choice(objectives)
 
