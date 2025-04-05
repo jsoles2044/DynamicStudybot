@@ -12,7 +12,7 @@ objectives_input = st.text_area("Learning Objectives:")
 if objectives_input:
     objectives = [line.strip() for line in objectives_input.splitlines() if line.strip()]
 
-    # Initialize current objective
+# Initialize current objective
 if 'current_objective' not in st.session_state:
     st.session_state.current_objective = random.choice(objectives)
 
@@ -22,13 +22,13 @@ confidence = st.slider("How confident are you about this topic?", 1, 5)
 
 # --- Question Generation ---
 def generate_simple_question(objective):
-    return f"Let's start simple. What is one thing you remember about: {objective.lower()}?"
+    return f"Let's start with something simple. Can you describe one fact or idea about this topic: '{objective.lower()}'?"
 
 def generate_moderate_question(objective):
-    return f"Can you explain in your own words what this means: {objective.lower()}?"
+    return f"Can you explain this topic in your own words: '{objective.lower()}'? What details do you remember?"
 
 def generate_advanced_question(objective):
-    return f"Why is this important in history? Use examples if you can: {objective.lower()}"
+    return f"Why is this topic important in history? How did it affect people or events? ({objective.lower()})"
 
 if confidence <= 2:
     question = generate_simple_question(st.session_state.current_objective)
@@ -42,7 +42,7 @@ def is_answer_good(response):
     return len(response.strip().split()) > 5  # simple length check
 
 def generate_scaffold(objective, response):
-    return f"That's a good start. Think about this: {objective.lower()}—what's one example you remember?"
+    return f"That's a good start. Here's a hint to help: Think about who was involved, what happened, or why it mattered. ({objective.lower()})"
 
 st.subheader("🧠 Question")
 st.write(question)
