@@ -5,8 +5,19 @@ import random
 language = st.radio("Choose your preferred language:", ["English", "Spanish", "French"])
 
 # --- Objective Input ---
-st.title("📚 Dynamic StudyBot")
-st.write("Paste your learning objectives below. One per line.")
+# --- Mascot Selection ---
+mascots = {
+    "Abe (History Hero)": {"icon": "🧔", "voice": "Let’s explore the past and learn from it."},
+    "Beaky the Beaker (Science Buddy)": {"icon": "🧪", "voice": "Science is all about asking why and experimenting!"},
+    "Infinity (Math Mentor)": {"icon": "♾️", "voice": "Let’s solve this step by step together."},
+    "Lexi the Book (ELA Guide)": {"icon": "📘", "voice": "Every question is a new story to tell."},
+    "Owlbot (General Helper)": {"icon": "🦉", "voice": "Wisdom begins with curiosity."}
+}
+mascot_choice = st.selectbox("Choose your learning companion:", list(mascots.keys()))
+mascot_icon = mascots[mascot_choice]["icon"]
+mascot_voice = mascots[mascot_choice]["voice"]
+st.title(f"{mascot_icon} Dynamic StudyBot")
+st.write(f"You are learning with {mascot_choice}. {mascot_voice}")
 objectives_input = st.text_area("Learning Objectives:")
 
 if objectives_input:
