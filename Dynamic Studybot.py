@@ -1,17 +1,3 @@
-import streamlit as st
-import random
-
-# --- Language Selection ---
-language = st.radio("Choose your preferred language:", ["English", "Spanish", "French"])
-
-# --- Objective Input ---
-st.title("📚 Dynamic StudyBot")
-st.write("Paste your learning objectives below. One per line.")
-objectives_input = st.text_area("Learning Objectives:")
-
-if objectives_input:
-    objectives = [line.strip() for line in objectives_input.splitlines() if line.strip()]
-
 #import streamlit as st
 import random
 
